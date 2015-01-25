@@ -1,0 +1,58 @@
+<MyScreenManager>:
+    id: screenmanager_main
+    MainWidget:
+        id: screen_main
+        name: 'main'
+    TableWidget:
+        id: screen_table
+        name: 'table'
+
+<MainWidget>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: label_filepath
+            font_size: 20
+            size_hint_y: None
+            height: 20
+        FileChooserListView:
+            id: listview
+            filters:['*.csv']
+            on_selection: label_filepath.text = self.selection and self.selection[0] or ''
+        Button:
+            id: button_loadcsv
+            font_size:100
+            size_hint_y: None
+            text: 'Load CSV'
+            on_release: root.loadcsv(label_filepath.text)
+        Button:
+            id:button_savexls
+            font_size:100
+            size_hint_y: None
+            text: 'Save as XLS'
+            on_release: root.savexls(listview.path+'\invoice.xls',root.data)
+        Button:
+            id:button_showresult
+            font_size:100
+            size_hint_y: None
+            text: 'show result'
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.manager.current = 'table'
+
+<TableWidget>:
+    BoxLayout:
+        orientation: 'vertical'
+        TextInput:
+            id:textinput_result
+            font_size:20
+            size_hint_y: None
+            text: 'test'
+        Button:
+            id:button_gomain
+            font_size:100
+            size_hint_y: None
+            text: 'main'
+            on_release:
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'main'
