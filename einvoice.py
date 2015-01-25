@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
-__author__ = 'ITRI'
+__author__ = 'HCWei'
 import csv
+import xlwt
 
 def getInvoice(filepath=''):
     try:
@@ -16,6 +17,14 @@ def getInvoice(filepath=''):
     #print(data[0][1])
     return data
 
+def saveExcel(filepath,data):
+    book = xlwt.Workbook(encoding='utf-8')
+    sheet = book.add_sheet('Sheet 1')
+    for i, l in enumerate(data):
+        for j, col in enumerate(l):
+            sheet.write(i, j, col)
+    book.save(filepath)
 if __name__ == '__main__':
     data = getInvoice('invoice.csv')
     print(data[0][1])
+    saveExcel('invoice.xls',data)
