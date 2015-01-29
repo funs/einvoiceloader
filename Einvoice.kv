@@ -1,13 +1,16 @@
-<MyScreenManager>:
-    id: screenmanager_main
-    MainWidget:
+#: set name 'global text'
+ScreenManager:
+    id:screen_manager
+    MainScreen:
         id: screen_main
         name: 'main'
-    TableWidget:
+        #manager: screen_manager
+    TableScreen:
         id: screen_table
         name: 'table'
-
-<MainWidget>:
+        #manager: screen_manager
+        result_text: screen_main.result_text
+<MainScreen>:
     BoxLayout:
         orientation: 'vertical'
         Label:
@@ -37,17 +40,19 @@
             size_hint_y: None
             text: 'show result'
             on_release:
+                root.change_result_text()
                 root.manager.transition.direction = 'left'
                 root.manager.current = 'table'
 
-<TableWidget>:
+<TableScreen>:
     BoxLayout:
         orientation: 'vertical'
         TextInput:
             id:textinput_result
             font_size:20
+            height:300
             size_hint_y: None
-            text: 'test'
+            text: root.result_text
         Button:
             id:button_gomain
             font_size:100
