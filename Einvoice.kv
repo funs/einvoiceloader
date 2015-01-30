@@ -1,15 +1,29 @@
-#: set name 'global text'
-ScreenManager:
+#: import ListAdapter kivy.adapters.listadapter.ListAdapter
+#: import ListItemButton kivy.uix.listview.ListItemButton
+
+#override the selected_color and deselected_color properties of the ListItemButton
+<ListItemButton>:
+    selected_color: 1,1,1,1
+    deselected_color: 0,0,0,1
+    font_name: 'DroidSansFallback.ttf'
+    on_press: app.root.refresh_textinput(*args)
+
+
+# The GUI coding
+<MyScreenManager>:
     id:screen_manager
     MainScreen:
         id: screen_main
         name: 'main'
+        data: screen_manager.data
         #manager: screen_manager
     TableScreen:
         id: screen_table
         name: 'table'
         #manager: screen_manager
         result_text: screen_main.result_text
+        listdata: screen_main.listdata
+        contentlist: screen_manager.contentlist
 <MainScreen>:
     BoxLayout:
         orientation: 'vertical'
@@ -25,6 +39,7 @@ ScreenManager:
         Button:
             id: button_loadcsv
             font_size:100
+            #font_name: root.p
             size_hint_y: None
             text: 'Load CSV'
             on_release: root.loadcsv(label_filepath.text)
@@ -47,12 +62,20 @@ ScreenManager:
 <TableScreen>:
     BoxLayout:
         orientation: 'vertical'
+        ListView:
+            size_hint_y: .8
+            adapter:
+                ListAdapter(data = root.listdata,
+                selection_mode='single',
+                allow_empty_selection=False,
+                cls = ListItemButton)
+
         TextInput:
             id:textinput_result
             font_size:20
-            height:300
+            font_name: root.p
             size_hint_y: None
-            text: root.result_text
+            text: root.contentlist
         Button:
             id:button_gomain
             font_size:100

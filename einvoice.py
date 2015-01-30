@@ -24,7 +24,45 @@ def saveExcel(filepath,data):
         for j, col in enumerate(l):
             sheet.write(i, j, col)
     book.save(filepath)
+
+def setlist(data):
+    try:
+        listdata = []
+        for i in data:
+            if i[0] == 'M':
+                listdata.append(i[2]+' / '+i[3]+' / '+i[5])
+            else:
+                pass
+        return listdata
+    except Exception as err:
+        print(err)
+
+def compare_content(data,text):
+    contentlist = []
+    content = ''
+    try:
+        for i in data:
+            if (i[0] == 'D') & (i[1].find(text[0:10])==0):
+                contentlist.append(i[3]+' /'+i[2]+';')
+            else:
+                pass
+        #print(contentlist)
+        for i in contentlist:
+            content = content+i
+        #print(content)
+        return content
+    except Exception as err:
+        print(err)
+
 if __name__ == '__main__':
     data = getInvoice('invoice.csv')
-    print(data[0][1])
-    saveExcel('invoice.xls',data)
+    for i in data[0]:
+        print(i)
+        print(type(i))
+
+    #saveExcel('invoice.xls',data)
+    k = setlist(data)
+    print(k[18])
+    j = compare_content(data,k[2])
+    print('aaa')
+    print(j)
