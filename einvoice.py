@@ -43,7 +43,7 @@ def compare_content(data,text):
     try:
         for i in data:
             if (i[0] == 'D') & (i[1].find(text[0:10])==0):
-                contentlist.append(i[3]+' /'+i[2]+';')
+                contentlist.append(i[3]+' $'+i[2]+'\n')
             else:
                 pass
         #print(contentlist)
@@ -63,6 +63,6 @@ if __name__ == '__main__':
     #saveExcel('invoice.xls',data)
     k = setlist(data)
     print(k[18])
-    j = compare_content(data,k[2])
+    j = compare_content(data,k[3])
     print('aaa')
     print(j)

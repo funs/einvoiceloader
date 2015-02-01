@@ -8,14 +8,13 @@
     font_name: 'DroidSansFallback.ttf'
     on_press: app.root.refresh_textinput(*args)
 
-
 # The GUI coding
 <MyScreenManager>:
     id:screen_manager
+    data: screen_main.data
     MainScreen:
         id: screen_main
         name: 'main'
-        data: screen_manager.data
         #manager: screen_manager
     TableScreen:
         id: screen_table
@@ -23,7 +22,7 @@
         #manager: screen_manager
         result_text: screen_main.result_text
         listdata: screen_main.listdata
-        contentlist: screen_manager.contentlist
+        contentstring: screen_manager.contentstring
 <MainScreen>:
     BoxLayout:
         orientation: 'vertical'
@@ -74,8 +73,8 @@
             id:textinput_result
             font_size:20
             font_name: root.p
-            size_hint_y: None
-            text: root.contentlist
+            size_hint_y: .5
+            text: root.contentstring
         Button:
             id:button_gomain
             font_size:100
