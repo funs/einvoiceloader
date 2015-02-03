@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 __author__ = 'HCWei'
-#import csv
-import xlwt
+import csv
+#import xlwt
 
 def getInvoice(filepath=''):
     try:
