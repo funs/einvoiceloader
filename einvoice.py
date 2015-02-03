@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 __author__ = 'HCWei'
-import csv
+#import csv
 import xlwt
 
 def getInvoice(filepath=''):
@@ -16,7 +16,7 @@ def getInvoice(filepath=''):
         print(err)
     #print(data[0][1])
     return data
-
+'''
 def saveExcel(filepath,data):
     book = xlwt.Workbook(encoding='utf-8')
     sheet = book.add_sheet('Sheet 1')
@@ -24,7 +24,7 @@ def saveExcel(filepath,data):
         for j, col in enumerate(l):
             sheet.write(i, j, col)
     book.save(filepath)
-
+'''
 def setlist(data):
     try:
         listdata = []

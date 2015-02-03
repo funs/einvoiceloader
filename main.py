@@ -27,9 +27,11 @@ class MainScreen(Screen):
         print(filepath)
         self.data = einvoice.getInvoice(filepath)
         return self.data
+    '''
     def savexls(self,filepath,data):
         print(filepath)
         einvoice.saveExcel(filepath,data)
+        '''
     def change_result_text(self):
         self.listdata = einvoice.setlist(self.data)
 
