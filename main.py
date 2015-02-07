@@ -16,12 +16,7 @@ import einvoice
 
 class MainScreen(Screen):
     #kivy.resources.resource_add_path('.')
-    try:
-        #p = kivy.resources.resource_find('/system/fonts/DroidSansFallback.ttf')
-        p = kivy.resources.resource_find('/system/fonts/DroidSansFallback.ttf')
-    except Exception as err:
-        #p = kivy.resources.resource_find('DroidSansFallback.ttf')
-        pass
+    p = kivy.resources.resource_find('DroidSansFallback.ttf')
     data = ListProperty([])
     result_text = StringProperty('')
     listdata = ListProperty([])
@@ -42,22 +37,18 @@ class MainScreen(Screen):
 
 class TableScreen(Screen):
     #kivy.resources.resource_add_path('.')
-    try:
-        p = kivy.resources.resource_find('/system/fonts/DroidSansFallback.ttf')
-    except Exception as err:
-        pass
+    p = kivy.resources.resource_find('DroidSansFallback.ttf')
 
     result_text = StringProperty('')
     listdata = ListProperty()
     contentstring = StringProperty('')
 
 class MyScreenManager(ScreenManager):
+    #kivy.resources.resource_add_path('.')
+    p = kivy.resources.resource_find('DroidSansFallback.ttf')
+
     contentstring = StringProperty('')
     data = ListProperty('')
-    try:
-        p = kivy.resources.resource_find('/system/fonts/DroidSansFallback.ttf')
-    except Exception as err:
-        pass
 
     def refresh_textinput(self,change):
         self.contentstring = einvoice.compare_content(self.data,change.text)
