@@ -5,7 +5,7 @@
 <ListItemButton>:
     selected_color: 1,1,1,1
     deselected_color: 0,0,0,1
-    font_name: './src/DroidSansFallback.ttf'
+    #font_name: './src/DroidSansFallback.ttf'
     on_press: app.root.refresh_textinput(*args)
 
 # The GUI coding
@@ -40,7 +40,7 @@
             font_size:100
             font_name: root.p
             size_hint_y: None
-            text: 'Load CSV'
+            text: 'Load CSV囉'
             on_release: root.loadcsv(label_filepath.text)
         Button:
             id:button_savexls
