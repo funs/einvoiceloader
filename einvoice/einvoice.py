@@ -54,6 +54,10 @@ def compare_content(data,text):
     except Exception as err:
         print(err)
 
+def testdata():
+    testdata = 'lalalalala'
+    return testdata
+
 if __name__ == '__main__':
     data = getInvoice('invoice.csv')
     for i in data[0]:

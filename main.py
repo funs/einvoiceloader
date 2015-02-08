@@ -42,6 +42,11 @@ class TableScreen(Screen):
     result_text = StringProperty('')
     listdata = ListProperty()
     contentstring = StringProperty('')
+    testdata2 = StringProperty('')
+
+    def testdata(self):
+        self.testdata2 = einvoice.testdata()
+        return self.testdata2
 
 class MyScreenManager(ScreenManager):
     kivy.resources.resource_add_path('./src')
