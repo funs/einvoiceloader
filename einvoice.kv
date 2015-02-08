@@ -74,8 +74,8 @@
             font_size:20
             font_name: root.p
             size_hint_y: .5
-            #text: root.contentstring
-            text: root.testdata2
+            text: root.contentstring
+
         Button:
             id:button_gomain
             font_size:100
@@ -84,10 +84,3 @@
             on_release:
                 root.manager.transition.direction = 'right'
                 root.manager.current = 'main'
-
-        Button:
-            id:button_testdata
-            font_size:100
-            size_hint_y: None
-            text: 'testdata'
-            on_release: root.testdata()
