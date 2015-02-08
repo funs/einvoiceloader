@@ -10,7 +10,7 @@ from kivy.uix.listview import ListItemButton
 from kivy.uix.screenmanager import ScreenManager,Screen
 from kivy.properties import ListProperty, ObjectProperty,StringProperty
 import kivy.resources
-import einvoice
+from einvoice import einvoice
 
 
 
