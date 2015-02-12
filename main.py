@@ -33,7 +33,7 @@ class MainScreen(Screen):
         '''
     def change_result_text(self):
         self.listdata = einvoice.setlist(self.data)
-
+        return self.listdata
 
 class TableScreen(Screen):
     kivy.resources.resource_add_path('./src')
@@ -51,11 +51,22 @@ class MyScreenManager(ScreenManager):
     contentstring = StringProperty('')
     data = ListProperty('')
 
+
+
+class EinvoiceApp(App):
+    data = ListProperty([])
+    result_text = StringProperty('')
+    listdata = ListProperty([])
+    contentstring = StringProperty('')
+
+    kivy.resources.resource_add_path('./src')
+    p = kivy.resources.resource_find('DroidSansFallback.ttf')
+
     def refresh_textinput(self,change):
         self.contentstring = einvoice.compare_content(self.data,change.text)
         print(self.contentstring)
+        return self.contentstring
 
-class EinvoiceApp(App):
     def build(self):
         return MyScreenManager()
 

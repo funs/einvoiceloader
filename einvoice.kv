@@ -5,13 +5,13 @@
 <ListItemButton>:
     #selected_color: 1,1,1,1
     #deselected_color: 0,0,0,1
-    font_name: './src/DroidSansFallback.ttf'
-    on_press: app.root.refresh_textinput(*args)
-
+    font_name: app.p
+    #on_press: app.contentstring = app.root.refresh_textinput(*args)
+    on_press: app.refresh_textinput(*args)
 # The GUI coding
 <MyScreenManager>:
     id:screen_manager
-    data: screen_main.data
+    #data: screen_main.data
     MainScreen:
         id: screen_main
         name: 'main'
@@ -20,9 +20,9 @@
         id: screen_table
         name: 'table'
         #manager: screen_manager
-        result_text: screen_main.result_text
-        listdata: screen_main.listdata
-        contentstring: screen_manager.contentstring
+        #result_text: screen_main.result_text
+        #listdata: screen_main.listdata
+        #contentstring: screen_manager.contentstring
 <MainScreen>:
     BoxLayout:
         orientation: 'vertical'
@@ -38,10 +38,10 @@
         Button:
             id: button_loadcsv
             font_size:100
-            font_name: root.p
+            font_name: app.p
             size_hint_y: None
             text: 'Load CSV'
-            on_release: root.loadcsv(label_filepath.text)
+            on_release: app.data = root.loadcsv(label_filepath.text)
         Button:
             id:button_savexls
             font_size:100
@@ -54,7 +54,7 @@
             size_hint_y: None
             text: 'show result'
             on_release:
-                root.change_result_text()
+                app.listdata = root.change_result_text()
                 root.manager.transition.direction = 'left'
                 root.manager.current = 'table'
 
@@ -64,7 +64,7 @@
         ListView:
             size_hint_y: .8
             adapter:
-                ListAdapter(data = root.listdata,
+                ListAdapter(data = app.listdata,
                 selection_mode='single',
                 allow_empty_selection=False,
                 cls = ListItemButton)
@@ -72,9 +72,9 @@
         TextInput:
             id:textinput_result
             font_size:20
-            font_name: root.p
+            font_name: app.p
             size_hint_y: .5
-            text: root.contentstring
+            text: app.contentstring
         Button:
             id:button_gomain
             font_size:100
