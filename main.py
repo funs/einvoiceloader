@@ -48,8 +48,8 @@ class MyScreenManager(ScreenManager):
     kivy.resources.resource_add_path('./src')
     p = kivy.resources.resource_find('DroidSansFallback.ttf')
 
-    contentstring = StringProperty('')
-    data = ListProperty('')
+    #contentstring = StringProperty('')
+    #data = ListProperty([])
 
 
 
