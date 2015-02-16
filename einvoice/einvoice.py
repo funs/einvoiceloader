@@ -12,10 +12,11 @@ def getInvoice(filepath=''):
             k = raw[0].decode('big5').encode('utf-8')
             l = k.split('|')
             data.append(l)
+        return data
     except(Exception) as err:
         print(err)
     #print(data[0][1])
-    return data
+
 '''
 def saveExcel(filepath,data):
     book = xlwt.Workbook(encoding='utf-8')
