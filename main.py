@@ -17,31 +17,31 @@ from einvoice import einvoice
 class MainScreen(Screen):
     kivy.resources.resource_add_path('./src')
     p = kivy.resources.resource_find('DroidSansFallback.ttf')
-    data = []
-    result_text = ''
-    listdata = ListProperty([])
+    #data = []
+    #result_text = ''
+    #listdata = ListProperty([])
 
 
     def loadcsv(self,filepath):
         print(filepath)
-        self.data = einvoice.getInvoice(filepath)
-        return self.data
+        data = einvoice.getInvoice(filepath)
+        return data
     '''
     def savexls(self,filepath,data):
         print(filepath)
         einvoice.saveExcel(filepath,data)
         '''
-    def change_result_text(self):
-        self.listdata = einvoice.setlist(self.data)
-        return self.listdata
+    def change_result_text(self,data):
+        listdata = einvoice.setlist(data)
+        return listdata
 
 class TableScreen(Screen):
     kivy.resources.resource_add_path('./src')
     p = kivy.resources.resource_find('DroidSansFallback.ttf')
 
-    result_text = ''
+    result_text = StringProperty('')
     listdata = ListProperty()
-    contentstring = ''
+    contentstring = StringProperty('')
 
 
 class MyScreenManager(ScreenManager):
@@ -54,10 +54,10 @@ class MyScreenManager(ScreenManager):
 
 
 class EinvoiceApp(App):
-    data = []
-    result_text = ''
+    #data = []
+    #result_text = StringProperty('')
     listdata = ListProperty([])
-    contentstring = ''
+    contentstring = StringProperty('')
 
     kivy.resources.resource_add_path('./src')
     p = kivy.resources.resource_find('DroidSansFallback.ttf')

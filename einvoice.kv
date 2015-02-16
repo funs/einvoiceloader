@@ -54,7 +54,7 @@
             size_hint_y: None
             text: 'show result'
             on_release:
-                #app.listdata = root.change_result_text()
+                app.listdata = root.change_result_text(app.data)
                 root.manager.transition.direction = 'left'
                 root.manager.current = 'table'
 
