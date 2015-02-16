@@ -17,8 +17,8 @@ from einvoice import einvoice
 class MainScreen(Screen):
     kivy.resources.resource_add_path('./src')
     p = kivy.resources.resource_find('DroidSansFallback.ttf')
-    data = ListProperty([])
-    result_text = StringProperty('')
+    data = []
+    result_text = ''
     listdata = ListProperty([])
 
 
@@ -39,9 +39,9 @@ class TableScreen(Screen):
     kivy.resources.resource_add_path('./src')
     p = kivy.resources.resource_find('DroidSansFallback.ttf')
 
-    result_text = StringProperty('')
+    result_text = ''
     listdata = ListProperty()
-    contentstring = StringProperty('')
+    contentstring = ''
 
 
 class MyScreenManager(ScreenManager):
@@ -54,10 +54,10 @@ class MyScreenManager(ScreenManager):
 
 
 class EinvoiceApp(App):
-    data = ListProperty([])
-    result_text = StringProperty('')
+    data = []
+    result_text = ''
     listdata = ListProperty([])
-    contentstring = StringProperty('')
+    contentstring = ''
 
     kivy.resources.resource_add_path('./src')
     p = kivy.resources.resource_find('DroidSansFallback.ttf')

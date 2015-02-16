@@ -1,13 +1,14 @@
 # -*- coding:utf-8 -*-
 __author__ = 'HCWei'
 import csv
+from kivy.properties import ListProperty,StringProperty
 #import xlwt
 
 def getInvoice(filepath=''):
     try:
         f=open(filepath,'rb')
         csvreader = csv.reader(f)
-        data=[]
+        data = []
         for raw in csvreader:
             k = raw[0].decode('big5').encode('utf-8')
             l = k.split('|')
