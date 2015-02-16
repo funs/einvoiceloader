@@ -33,7 +33,7 @@ class MainScreen(Screen):
         '''
     def change_result_text(self):
         self.listdata = einvoice.setlist(self.data)
-        return self.listdata
+        return ['a','b','c','d']#self.listdata
 
 class TableScreen(Screen):
     kivy.resources.resource_add_path('./src')
