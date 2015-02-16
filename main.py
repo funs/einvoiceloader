@@ -64,7 +64,7 @@ class EinvoiceApp(App):
 
     def refresh_textinput(self,change):
         self.contentstring = einvoice.compare_content(self.data,change.text)
-        print(self.contentstring)
+        #print(self.contentstring)
         return self.contentstring
 
     def build(self):
