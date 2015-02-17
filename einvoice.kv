@@ -7,7 +7,7 @@
     deselected_color: 0,0,0,1
     #The trickiest part is merging your color with the default button color (rgb 88,88,88) to get the desired color in the app. The formula for determining the Kivy color value based on your color is: ([my_color]+88)/255. So a red value of 80 becomes 0.659.
     font_name: app.p
-    #height:'25sp'
+    height:'20sp'
     #font_size:'25sp'
     #on_press: app.contentstring = app.root.refresh_textinput(*args)
     on_press: app.refresh_textinput(*args)
@@ -36,7 +36,7 @@
             #height: 20
         FileChooserListView:
             id: listview
-            height:100
+            #height:200
             filters:['*.csv']
             on_selection: label_filepath.text = self.selection and self.selection[0] or ''
         Button:
@@ -77,7 +77,7 @@
             id:textinput_result
             #font_size:20
             font_name: app.p
-            font_size:'25sp'
+            font_size:'20sp'
             size_hint_y: .3
             text: app.contentstring
         Button:

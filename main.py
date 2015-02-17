@@ -67,6 +67,14 @@ class EinvoiceApp(App):
         #print(self.contentstring)
         return self.contentstring
 
+    def on_pause(self):
+      # Here you can save data if needed
+      return True
+
+    def on_resume(self):
+      # Here you can check if any data needs replacing (usually nothing)
+      pass
+
     def build(self):
         return MyScreenManager()
 
