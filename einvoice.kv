@@ -3,9 +3,12 @@
 
 #override the selected_color and deselected_color properties of the ListItemButton
 <ListItemButton>:
-    #selected_color: 1,1,1,1
-    #deselected_color: 0,0,0,1
+    selected_color: 1,1,1,1
+    deselected_color: 0,0,0,1
+    #The trickiest part is merging your color with the default button color (rgb 88,88,88) to get the desired color in the app. The formula for determining the Kivy color value based on your color is: ([my_color]+88)/255. So a red value of 80 becomes 0.659.
     font_name: app.p
+    height:'50sp'
+    font_size:'50sp'
     #on_press: app.contentstring = app.root.refresh_textinput(*args)
     on_press: app.refresh_textinput(*args)
 # The GUI coding
@@ -28,30 +31,31 @@
         orientation: 'vertical'
         Label:
             id: label_filepath
-            font_size: 20
-            size_hint_y: None
-            height: 20
+            #font_size: 20
+            size_hint_y: .1
+            #height: 20
         FileChooserListView:
             id: listview
+            height:100
             filters:['*.csv']
             on_selection: label_filepath.text = self.selection and self.selection[0] or ''
         Button:
             id: button_loadcsv
-            font_size:100
+            #font_size:100
             font_name: app.p
-            size_hint_y: None
+            size_hint_y: .1
             text: 'Load CSV'
             on_release: app.data = root.loadcsv(label_filepath.text)
         Button:
             id:button_savexls
-            font_size:100
-            size_hint_y: None
+            #font_size:100
+            size_hint_y: .1
             text: 'Save as XLS'
             #on_release: root.savexls(listview.path+'\invoice.xls',root.data)
         Button:
             id:button_showresult
-            font_size:100
-            size_hint_y: None
+            #font_size:100
+            size_hint_y: .1
             text: 'show result'
             on_release:
                 app.listdata = root.change_result_text(app.data)
@@ -62,7 +66,7 @@
     BoxLayout:
         orientation: 'vertical'
         ListView:
-            size_hint_y: .8
+            size_hint_y: .6
             adapter:
                 ListAdapter(data = app.listdata,
                 selection_mode='single',
@@ -71,14 +75,15 @@
 
         TextInput:
             id:textinput_result
-            font_size:20
+            #font_size:20
             font_name: app.p
-            size_hint_y: .5
+            font_size:'50sp'
+            size_hint_y: .3
             text: app.contentstring
         Button:
             id:button_gomain
-            font_size:100
-            size_hint_y: None
+            #font_size:100
+            size_hint_y: .1
             text: 'main'
             on_release:
                 root.manager.transition.direction = 'right'
