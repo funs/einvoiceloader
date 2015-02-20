@@ -72,14 +72,17 @@
                 selection_mode='single',
                 allow_empty_selection=False,
                 cls = ListItemButton)
-
-        TextInput:
-            id:textinput_result
-            #font_size:20
-            font_name: app.p
-            font_size:'20sp'
+        ScrollView:
             size_hint_y: .3
-            text: app.contentstring
+            Label:
+                id:label_result
+                #font_size:20
+                font_name: app.p
+                font_size:'20sp'
+                text: app.contentstring
+                size_hint_y: None
+                color: .792,.882,1,1
+                height: self.texture_size[1]
         Button:
             id:button_gomain
             #font_size:100

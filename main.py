@@ -8,6 +8,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.listview import ListView
 from kivy.uix.listview import ListItemButton
 from kivy.uix.screenmanager import ScreenManager,Screen
+from kivy.uix.scrollview import ScrollView
 from kivy.properties import ListProperty, ObjectProperty,StringProperty
 import kivy.resources
 from einvoice import einvoice
