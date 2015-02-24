@@ -29,16 +29,18 @@
 <MainScreen>:
     BoxLayout:
         orientation: 'vertical'
-        Label:
-            id: label_filepath
-            #font_size: 20
-            size_hint_y: .1
-            #height: 20
+
         FileChooserListView:
             id: listview
             #height:200
             filters:['*.csv']
             on_selection: label_filepath.text = self.selection and self.selection[0] or ''
+        Label:
+            id: label_filepath
+            #font_size: 20
+            size_hint_y: .1
+            #height: 20
+
         Button:
             id: button_loadcsv
             #font_size:100
@@ -46,12 +48,12 @@
             size_hint_y: .1
             text: 'Load CSV'
             on_release: app.data = root.loadcsv(label_filepath.text)
-        Button:
-            id:button_savexls
-            #font_size:100
-            size_hint_y: .1
-            text: 'Save as XLS'
-            #on_release: root.savexls(listview.path+'\invoice.xls',root.data)
+        #Button:
+        #    id:button_savexls
+        #    #font_size:100
+        #    size_hint_y: .1
+        #    text: 'Save as XLS'
+        #    #on_release: root.savexls(listview.path+'\invoice.xls',root.data)
         Button:
             id:button_showresult
             #font_size:100
@@ -61,7 +63,13 @@
                 app.listdata = root.change_result_text(app.data)
                 root.manager.transition.direction = 'left'
                 root.manager.current = 'table'
-
+        Label:
+            id: label_about
+            #font_size: 20
+            font_name: app.p
+            size_hint_y: .1
+            #height: 20
+            text: '若有任何疑問，可來信pc904b28@yahoo.com.tw'
 <TableScreen>:
     BoxLayout:
         orientation: 'vertical'
